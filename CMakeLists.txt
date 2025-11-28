@@ -69,6 +69,13 @@ else()
     target_include_directories(spdlog::spdlog INTERFACE ${SPDLOG_INCLUDE_DIRS})
     target_link_libraries(spdlog::spdlog INTERFACE ${SPDLOG_LIBRARIES})
     target_compile_definitions(spdlog::spdlog INTERFACE ${SPDLOG_CFLAGS_OTHER})
+
+    # GCC 8.x (Rocky Linux 기본 8.5)에서 std::filesystem 링크를 위해 stdc++fs 추가
+    if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+        if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 9.0)
+            set(FILESYSTEM_LIB stdc++fs)
+        endif()
+    endif()
 endif()
 
 #############################################
@@ -84,6 +91,7 @@ add_executable(xe_xerces_example
 target_link_libraries(xe_xerces_example
     PRIVATE XercesC::XercesC
     PRIVATE spdlog::spdlog
+    PRIVATE ${FILESYSTEM_LIB}
 )
 
 # main.cpp 등에서 CMakeLists.txt 위치를 알 수 있도록 전달

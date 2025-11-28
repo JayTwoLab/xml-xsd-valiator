@@ -16,7 +16,7 @@
 
 namespace {
 
-// std::string 을 XMLCh* 로 변환하는 헬퍼 함수
+// Helper function that converts std::string to XMLCh*
 XMLCh* to_xml_ch(const std::string& s) {
     return ::xercesc::XMLString::transcode(s.c_str());
 }
@@ -27,7 +27,7 @@ namespace j2::xercesc {
 
 xml_validator_app::xml_validator_app()
 {
-    // 콘솔 컬러 출력용 로거 생성
+    // Creating loggers for console color output
     const std::string logger_name = "xml_validator";
     auto sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
     logger_ = std::make_shared<spdlog::logger>(logger_name, sink);
@@ -43,7 +43,7 @@ void xml_validator_app::set_xsd_path(const std::string& xsd_path) {
 }
 
 xml_validator_result xml_validator_app::run() {
-    // XML/XSD 경로 유효성 확인
+    // XML/XSD path validation
     if (xml_path_.empty() || xsd_path_.empty()) {
         logger_->error("XML path or XSD path is not set.");
         return xml_validator_result::file_not_found;
@@ -58,7 +58,7 @@ xml_validator_result xml_validator_app::run() {
     }
 
     try {
-        // Xerces-C++ 초기화 (프로세스당 1회 필요)
+        // Xerces-C++ Initialization (requires once per process)
         ::xercesc::XMLPlatformUtils::Initialize();
     } catch (const ::xercesc::XMLException& e) {
         char* message = ::xercesc::XMLString::transcode(e.getMessage());
@@ -69,7 +69,7 @@ xml_validator_result xml_validator_app::run() {
 
     xml_validator_result result = xml_validator_result::success;
 
-    // SAX2 XML 파서 생성 (수동 delete 필요)
+    // Create SAX2 XML parser (manual delete required)
     ::xercesc::SAX2XMLReader* parser =
         ::xercesc::XMLReaderFactory::createXMLReader();
 
@@ -78,19 +78,19 @@ xml_validator_result xml_validator_app::run() {
         parser->setErrorHandler(&error_handler);
         parser->setContentHandler(&error_handler);
 
-        // 검증 및 스키마 관련 옵션 설정
+        // Set verification and schema-related options
         parser->setFeature(::xercesc::XMLUni::fgSAX2CoreValidation, true);
         parser->setFeature(::xercesc::XMLUni::fgXercesSchema, true);
         parser->setFeature(::xercesc::XMLUni::fgXercesSchemaFullChecking, true);
 
-        // no-namespace 스키마 위치 설정
+        // Setting the location of the no-namespace schema
         XMLCh* no_ns_location = to_xml_ch(xsd_path_);
         parser->setProperty(
             ::xercesc::XMLUni::fgXercesSchemaExternalNoNameSpaceSchemaLocation,
             no_ns_location);
         ::xercesc::XMLString::release(&no_ns_location);
 
-        // XML 파일 파싱
+        // parsing XML files
         XMLCh* xml_file = to_xml_ch(xml_path_);
         parser->parse(xml_file);
         ::xercesc::XMLString::release(&xml_file);
@@ -120,7 +120,7 @@ xml_validator_result xml_validator_app::run() {
         delete parser;
     }
 
-    // Xerces-C++ 종료 (Initialize 와 짝을 이룸)
+    // Xerces-C++ exit (paired with Initialize)
     ::xercesc::XMLPlatformUtils::Terminate();
 
     return result;

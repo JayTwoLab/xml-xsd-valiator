@@ -9,7 +9,7 @@ The `CMakeLists.txt` is written to support:
 
 - **Windows / MSVC (Visual Studio + vcpkg, `x64-windows-static`)**
 - **Windows / MinGW-w64 (Qt / g++ + vcpkg, `x64-mingw-static`)**
-- **Linux (Rocky / Ubuntu, system packages via `pkg-config`)** fileciteturn0file0
+- **Linux (Rocky / Ubuntu, system packages via `pkg-config`)** 
 
 ## Features
 - XML validation using Xerces-C++
@@ -18,11 +18,11 @@ The `CMakeLists.txt` is written to support:
 - Cross-platform CMake configuration (MSVC, MinGW, Linux)
 
 ## File Structure
-- `main.cpp` – entry point fileciteturn0file1L1-L18  
-- `xml_validator_app.*` – validation controller fileciteturn0file5L1-L112  
-- `simple_error_handler.*` – SAX2 error handler fileciteturn0file3L1-L109  
+- `main.cpp` – entry point 
+- `xml_validator_app.*` – validation controller 
+- `simple_error_handler.*` – SAX2 error handler 
 - `person_int_schema.xsd` – sample schema  
-- `person_invalid.xml` – intentionally invalid sample XML fileciteturn0file2L1-L6  
+- `person_invalid.xml` – intentionally invalid sample XML 
 
 ---
 
@@ -30,7 +30,7 @@ The `CMakeLists.txt` is written to support:
 
 ### 1.1 Windows – Visual Studio (MSVC) + vcpkg
 
-The CMake script assumes vcpkg is installed under `%VCPKG_ROOT%` or `%USERPROFILE%\vcpkg`, and uses the triplet **`x64-windows-static`**. fileciteturn0file0L7-L32
+The CMake script assumes vcpkg is installed under `%VCPKG_ROOT%` or `%USERPROFILE%\vcpkg`, and uses the triplet **`x64-windows-static`**. 
 
 1. Clone and bootstrap vcpkg (PowerShell):
    ```powershell
@@ -60,7 +60,7 @@ Visual Studio can also open the CMake project directly and will respect the `CMA
 
 ### 1.2 Windows – MinGW-w64 (Qt / g++) + vcpkg
 
-For MinGW, the CMake script uses the vcpkg triplet **`x64-mingw-static`**, again under `%VCPKG_ROOT%` or `%USERPROFILE%\vcpkg`. fileciteturn0file0L34-L58
+For MinGW, the CMake script uses the vcpkg triplet **`x64-mingw-static`**, again under `%VCPKG_ROOT%` or `%USERPROFILE%\vcpkg`. 
 
 1. Clone and bootstrap vcpkg (same location as above):
    ```powershell
@@ -86,7 +86,7 @@ Qt Creator에서 MinGW Kit을 선택한 뒤, 위와 동일한 `CMAKE_TOOLCHAIN_F
 
 ### 1.3 Linux – Rocky Linux / Ubuntu
 
-On Linux, the project does **not** use vcpkg. Instead it relies on **pkg-config** to find system-installed packages `xerces-c` and `spdlog`. fileciteturn0file0L60-L86
+On Linux, the project does **not** use vcpkg. Instead it relies on **pkg-config** to find system-installed packages `xerces-c` and `spdlog`. 
 
 #### 1.3.1 Rocky Linux (RHEL)
 
@@ -134,9 +134,9 @@ cmake --build build
 
 ## 3. How it Works
 
-1. Loads XML / XSD paths (from project root) fileciteturn0file1L4-L18  
-2. Initializes Xerces-C++ (once per process) fileciteturn0file5L23-L40  
+1. Loads XML / XSD paths (from project root) 
+2. Initializes Xerces-C++ (once per process) 
 3. Configures SAX2 parser with schema checking and XSD location  
 4. Parses the XML and collects validation errors through `simple_error_handler`  
-5. Returns an `xml_validator_result` exit code fileciteturn0file6L9-L24  
+5. Returns an `xml_validator_result` exit code 
 

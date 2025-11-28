@@ -9,7 +9,7 @@ class logger;
 
 namespace j2::xercesc {
 
-// XML 검증 결과 코드
+// XML Verification Result Code
 enum class xml_validator_result {
     success = 0,
     init_failed = 1,
@@ -27,7 +27,7 @@ public:
     void set_xml_path(const std::string& xml_path);
     void set_xsd_path(const std::string& xsd_path);
 
-    // XML/XSD 검증 실행
+    // Execute XML/XSD verification
     xml_validator_result run();
 
 private:

@@ -8,10 +8,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # 1) MSVC (Visual Studio)
 #############################################
 if (MSVC)
-    # vcpkg x64-windows-static 은 /MT(/MTd) CRT 사용
+    # vcpkg x64-windows-static uses /MT(/MTd) CRT
     set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
-    # vcpkg 위치 자동 탐색
+    # Automatically detect vcpkg location
     set(VCPKG_ROOT_HINT "$ENV{VCPKG_ROOT}")
     if(NOT VCPKG_ROOT_HINT OR VCPKG_ROOT_HINT STREQUAL "")
         set(VCPKG_ROOT_HINT "$ENV{USERPROFILE}/vcpkg")
@@ -47,8 +47,8 @@ elseif (MINGW)
     find_package(XercesC CONFIG REQUIRED)
     find_package(spdlog  CONFIG REQUIRED)
 
-    # ⚠ 여기서는 target_compile_options 사용 X
-    #   => 전역 옵션으로만 추가
+    # ⚠ Do not use target_compile_options here
+    #   => Add only as global options
     add_compile_options(-Wall -Wextra -Wpedantic)
 
 #############################################
@@ -70,7 +70,7 @@ else()
     target_link_libraries(spdlog::spdlog INTERFACE ${SPDLOG_LIBRARIES})
     target_compile_definitions(spdlog::spdlog INTERFACE ${SPDLOG_CFLAGS_OTHER})
 
-    # GCC 8.x (Rocky Linux 기본 8.5)에서 std::filesystem 링크를 위해 stdc++fs 추가
+    # On GCC 8.x (default 8.5 on Rocky Linux), link stdc++fs for std::filesystem
     if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
         if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 9.0)
             set(FILESYSTEM_LIB stdc++fs)
@@ -94,7 +94,7 @@ target_link_libraries(xe_xerces_example
     PRIVATE ${FILESYSTEM_LIB}
 )
 
-# main.cpp 등에서 CMakeLists.txt 위치를 알 수 있도록 전달
+# Provide CMakeLists.txt location to source files such as main.cpp
 target_compile_definitions(xe_xerces_example PRIVATE
     CMAKE_SOURCE_DIR_PATH="${CMAKE_CURRENT_LIST_DIR}"
 )

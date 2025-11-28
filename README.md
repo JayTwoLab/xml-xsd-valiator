@@ -88,7 +88,7 @@ Qt Creator에서 MinGW Kit을 선택한 뒤, 위와 동일한 `CMAKE_TOOLCHAIN_F
 
 On Linux, the project does **not** use vcpkg. Instead it relies on **pkg-config** to find system-installed packages `xerces-c` and `spdlog`. fileciteturn0file0L60-L86
 
-#### 1.3.1 Rocky Linux (RHEL 계열)
+#### 1.3.1 Rocky Linux (RHEL)
 
 Install development packages (root or sudo):
 
@@ -103,7 +103,7 @@ cmake -B build
 cmake --build build
 ```
 
-#### 1.3.2 Ubuntu / Debian 계열
+#### 1.3.2 Ubuntu / Debian
 
 Install development packages:
 

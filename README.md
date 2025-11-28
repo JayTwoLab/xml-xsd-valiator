@@ -1,6 +1,6 @@
 # xe_xerces_example
 
-[한국어 README](README.ko.md)
+[Korean README](README.ko.md)
 
 ## Overview
 This project demonstrates how to validate an XML file against an XSD schema using **Xerces-C++** and **spdlog**.
@@ -36,7 +36,7 @@ The CMake script assumes vcpkg is installed under `%VCPKG_ROOT%` or `%USERPROFIL
    ```powershell
    git clone https://github.com/microsoft/vcpkg.git "$env:USERPROFILE/vcpkg"
    cd "$env:USERPROFILE/vcpkg"
-   ./bootstrap-vcpkg.bat
+   bootstrap-vcpkg.bat
    ```
 
 2. Install required libraries:
@@ -66,7 +66,7 @@ For MinGW, the CMake script uses the vcpkg triplet **`x64-mingw-static`**, again
    ```powershell
    git clone https://github.com/microsoft/vcpkg.git "$env:USERPROFILE/vcpkg"
    cd "$env:USERPROFILE/vcpkg"
-   ./bootstrap-vcpkg.bat
+   bootstrap-vcpkg.bat
    ```
 
 2. Install MinGW-w64 triplet libraries:

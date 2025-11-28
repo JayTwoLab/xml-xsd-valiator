@@ -7,10 +7,10 @@ int main(int argc, char* argv[]) {
 #define CMAKE_SOURCE_DIR_PATH "."
 #endif
 
-    // CMakeLists.txt 에서 정의한 소스 디렉터리 기준 경로
+    // Source directory reference path defined by CMakeLists.txt
     std::filesystem::path base = std::filesystem::path(CMAKE_SOURCE_DIR_PATH);
 
-    // XML/XSD 파일 경로 (프로젝트 루트 기준)
+    // XML/XSD file path (based on project root)
     const std::string xml_path = (base / "person_invalid.xml").string();
     const std::string xsd_path = (base / "person_int_schema.xsd").string();
 

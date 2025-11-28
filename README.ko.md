@@ -36,17 +36,17 @@ CMake 스크립트는 vcpkg 가 `%VCPKG_ROOT%` 또는 `%USERPROFILE%\vcpkg` 에 
    ```powershell
    git clone https://github.com/microsoft/vcpkg.git "$env:USERPROFILE/vcpkg"
    cd "$env:USERPROFILE/vcpkg"
-   .ootstrap-vcpkg.bat
+   bootstrap-vcpkg.bat
    ```
 
 2. 의존 라이브러리 설치:
    ```powershell
-   .cpkg.exe install xerces-c:x64-windows-static spdlog:x64-windows-static
+   vcpkg.exe install xerces-c:x64-windows-static spdlog:x64-windows-static
    ```
 
 3. (선택) 유저 전체 통합:
    ```powershell
-   .cpkg.exe integrate install
+   vcpkg.exe integrate install
    ```
 
 4. CMake 구성 및 빌드 (프로젝트 루트에서 실행):
@@ -66,12 +66,12 @@ MinGW 환경에서는 `x64-mingw-static` 트리플릿을 사용하며, 역시 `%
    ```powershell
    git clone https://github.com/microsoft/vcpkg.git "$env:USERPROFILE/vcpkg"
    cd "$env:USERPROFILE/vcpkg"
-   .ootstrap-vcpkg.bat
+   bootstrap-vcpkg.bat
    ```
 
 2. MinGW 전용 트리플릿 라이브러리 설치:
    ```powershell
-   .cpkg.exe install xerces-c:x64-mingw-static spdlog:x64-mingw-static
+   vcpkg.exe install xerces-c:x64-mingw-static spdlog:x64-mingw-static
    ```
 
 3. MinGW / Qt CMake 를 사용한 구성 및 빌드 (예: Qt MinGW Kit):

@@ -41,7 +41,7 @@ void simple_error_handler::startElement(const XMLCh* const /*uri*/,
                                         const XMLCh* const /*qname*/,
                                         const ::xercesc::Attributes& /*attrs*/)
 {
-    // 시작 태그 이름을 스택에 저장
+    // Save the starting tag name to the stack
     char* tag = ::xercesc::XMLString::transcode(localname);
     element_stack_.emplace_back(tag);
     ::xercesc::XMLString::release(&tag);
@@ -51,7 +51,7 @@ void simple_error_handler::endElement(const XMLCh* const /*uri*/,
                                       const XMLCh* const /*localname*/,
                                       const XMLCh* const /*qname*/)
 {
-    // 종료 태그에서 스택에서 하나 제거
+    // Remove one from the stack from the exit tag
     if (!element_stack_.empty()) {
         element_stack_.pop_back();
     }
@@ -61,7 +61,7 @@ void simple_error_handler::print_message(const char* level,
                                          const ::xercesc::SAXParseException& exc,
                                          const std::string& current_tag)
 {
-    // 에러 메시지를 로그로 출력
+    // Output error messages as logs
     char* message = ::xercesc::XMLString::transcode(exc.getMessage());
 
     if (logger_) {
@@ -103,7 +103,7 @@ void simple_error_handler::collect_message(const char* level,
                                            const ::xercesc::SAXParseException& exc,
                                            const std::string& current_tag)
 {
-    // 에러 메시지를 문자열 형태로 벡터에 누적
+    // Accumulate error messages to vectors in string form
     char* message = ::xercesc::XMLString::transcode(exc.getMessage());
 
     std::string formatted;

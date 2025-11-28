@@ -1,0 +1,128 @@
+# -----------------------------------------
+# Build directories (CMake / Qt Creator / Ninja)
+# -----------------------------------------
+/build/
+/build-*/
+/*/build/
+/*/build-*/
+
+# Qt Creator user settings (machine-specific)
+*.user
+*.pro.user
+*.qbs.user
+*.qmlproject.user
+*.creator.user
+*.creator.user.*
+
+# -----------------------------------------
+# CMake Cache / Generated Files
+# -----------------------------------------
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+InstallManifest.txt
+compile_commands.json
+CMakeError.log
+CMakeOutput.log
+*.cmake.api.json
+
+# Ninja files
+.ninja_deps
+.ninja_log
+build.ninja
+
+# -----------------------------------------
+# MSVC build artifacts
+# -----------------------------------------
+*.obj
+*.pdb
+*.idb
+*.ilk
+*.sdf
+*.tlog
+*.VC.db
+*.VC.VC.opendb
+
+# -----------------------------------------
+# MinGW / GCC build artifacts
+# -----------------------------------------
+*.o
+*.a
+*.la
+*.lo
+*.out
+
+# -----------------------------------------
+# Executables / Libraries
+# -----------------------------------------
+*.exe
+*.dll
+*.so
+*.dylib
+*.lib
+*.exp
+
+# Qt generated files (MOC/UIC/RCC)
+moc_*.cpp
+moc_*.h
+ui_*.h
+qrc_*.cpp
+*.qm
+
+# -----------------------------------------
+# Logs / Dumps
+# -----------------------------------------
+*.log
+*.dump
+*.dmp
+
+# -----------------------------------------
+# IDE / Editor files
+# -----------------------------------------
+# VSCode
+.vscode/
+.vscode/*
+
+# CLion / JetBrains
+.idea/
+
+# Visual Studio
+*.suo
+*.ncb
+*.cache
+*.opensdf
+*.sdf
+*.ipch
+*.aps
+
+# -----------------------------------------
+# Python / Scripts (optional)
+# -----------------------------------------
+*.pyc
+__pycache__/
+
+# -----------------------------------------
+# vcpkg (ignore installed and buildtrees)
+# -----------------------------------------
+/vcpkg_installed/
+/vcpkg/buildtrees/
+/vcpkg/packages/
+
+# If vcpkg itself is cloned inside project root
+/vcpkg/.vs/
+/vcpkg/downloads/
+/vcpkg/installed/
+/vcpkg/buildtrees/
+/vcpkg/packages/
+
+# -----------------------------------------
+# Temporary files
+# -----------------------------------------
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swm
+*.swo
+*~

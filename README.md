@@ -36,17 +36,17 @@ The CMake script assumes vcpkg is installed under `%VCPKG_ROOT%` or `%USERPROFIL
    ```powershell
    git clone https://github.com/microsoft/vcpkg.git "$env:USERPROFILE/vcpkg"
    cd "$env:USERPROFILE/vcpkg"
-   .ootstrap-vcpkg.bat
+   ./bootstrap-vcpkg.bat
    ```
 
 2. Install required libraries:
    ```powershell
-   .cpkg.exe install xerces-c:x64-windows-static spdlog:x64-windows-static
+   vcpkg.exe install xerces-c:x64-windows-static spdlog:x64-windows-static
    ```
 
 3. (Optional) Enable user-wide integration:
    ```powershell
-   .cpkg.exe integrate install
+   vcpkg.exe integrate install
    ```
 
 4. Configure & build with CMake (from project root):
@@ -66,12 +66,12 @@ For MinGW, the CMake script uses the vcpkg triplet **`x64-mingw-static`**, again
    ```powershell
    git clone https://github.com/microsoft/vcpkg.git "$env:USERPROFILE/vcpkg"
    cd "$env:USERPROFILE/vcpkg"
-   .ootstrap-vcpkg.bat
+   ./bootstrap-vcpkg.bat
    ```
 
 2. Install MinGW-w64 triplet libraries:
    ```powershell
-   .cpkg.exe install xerces-c:x64-mingw-static spdlog:x64-mingw-static
+   vcpkg.exe install xerces-c:x64-mingw-static spdlog:x64-mingw-static
    ```
 
 3. Configure & build using MinGW CMake / Qt CMake (example with Qt MinGW kit):

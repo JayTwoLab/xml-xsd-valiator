@@ -3,13 +3,15 @@
 [Korean README](README.ko.md)
 
 ## Overview
-This project demonstrates how to validate an XML file against an XSD schema using **Xerces-C++** and **spdlog**.
 
-The `CMakeLists.txt` is written to support:
+- This project demonstrates how to validate an XML file against an XSD schema using **Xerces-C++** and **spdlog**.
+   - https://github.com/apache/xerces-c
+   - https://github.com/gabime/spdlog
 
-- **Windows / MSVC (Visual Studio + vcpkg, `x64-windows-static`)**
-- **Windows / MinGW-w64 (Qt / g++ + vcpkg, `x64-mingw-static`)**
-- **Linux (Rocky / Ubuntu, system packages via `pkg-config`)** 
+- The `CMakeLists.txt` is written to support:
+   - **Windows / MSVC (Visual Studio + vcpkg, `x64-windows-static`)**
+   - **Windows / MinGW-w64 (Qt / g++ + vcpkg, `x64-mingw-static`)**
+   - **Linux (Rocky / Ubuntu, system packages via `pkg-config`)** 
 
 ## Features
 - XML validation using Xerces-C++

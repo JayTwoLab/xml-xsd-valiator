@@ -3,13 +3,14 @@
 [English README](README.md)
 
 ## 개요
-이 프로젝트는 **Xerces-C++** 와 **spdlog** 를 사용하여 XML 파일을 XSD 스키마로 검증하는 예제입니다.
+- 이 프로젝트는 **Xerces-C++** 와 **spdlog** 를 사용하여 XML 파일을 XSD 스키마로 검증하는 예제입니다.
+   - https://github.com/apache/xerces-c
+   - https://github.com/gabime/spdlog
 
-`CMakeLists.txt` 는 다음 환경을 지원하도록 작성되어 있습니다. 
-
-- **Windows / MSVC (Visual Studio + vcpkg, `x64-windows-static`)**
-- **Windows / MinGW-w64 (Qt / g++ + vcpkg, `x64-mingw-static`)**
-- **Linux (Rocky / Ubuntu, `pkg-config` 기반 시스템 패키지)**
+- `CMakeLists.txt` 는 다음 환경을 지원하도록 작성되어 있습니다. 
+   - **Windows / MSVC (Visual Studio + vcpkg, `x64-windows-static`)**
+   - **Windows / MinGW-w64 (Qt / g++ + vcpkg, `x64-mingw-static`)**
+   - **Linux (Rocky / Ubuntu, `pkg-config` 기반 시스템 패키지)**
 
 ## 주요 기능
 - Xerces-C++ 기반 XML 검증

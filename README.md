@@ -84,7 +84,7 @@ For MinGW, the CMake script uses the vcpkg triplet **`x64-mingw-static`**, again
    cmake --build build-mingw
    ```
 
-Qt Creator에서 MinGW Kit을 선택한 뒤, 위와 동일한 `CMAKE_TOOLCHAIN_FILE` 과 `VCPKG_TARGET_TRIPLET` 을 설정하면 CMakeLists.txt 의 MinGW 분기가 자동으로 적용됩니다.
+If you select the MinGW Kit in the Qt Creator and set the same 'CMAKE_TOOLCHAIN_FILE' and 'VCPKG_TARGET_TRIPLET' as above, the MinGW branch of CMakeLists.txt is automatically applied.
 
 ### 1.3 Linux – Rocky Linux / Ubuntu
 
